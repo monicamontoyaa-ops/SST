@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Interactiva: Identificación de Riesgos y Peligros - SENA</title>
+    <!-- Tailwind CSS para diseño moderno y responsive -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons para iconografía clara -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --sena-green: #39A900;
+            --sena-dark: #2f2f2f;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: var(--sena-dark);
+        }
+
+        .sena-bg-green { background-color: var(--sena-green); }
+        .sena-text-green { color: var(--sena-green); }
+        .sena-border-green { border-color: var(--sena-green); }
+
+        /* Transiciones para el efecto SPA */
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hidden { display: none; }
+
+        /* Estilos de Accesibilidad: Foco claro */
+        button:focus {
+            outline: 3px solid #3b82f6;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- HEADER & BARRA DE PROGRESO -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center mb-2">
+                <div class="flex items-center gap-2">
+                    <div class="w-10 h-10 sena-bg-green rounded-full flex items-center justify-center text-white">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+                    <h1 class="font-bold text-xl tracking-tight">Gestión de Riesgos SST</h1>
+                </div>
+                <div class="text-right">
+                    <span id="points-display" class="font-bold sena-text-green text-lg">0 Puntos</span>
+                </div>
+            </div>
+            <!-- Barra de Progreso Dinámica -->
+            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div id="progress-bar" class="sena-bg-green h-2.5 rounded-full transition-all duration-500" style="width: 5%"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-4xl mx-auto w-full p-4">
+
+        <!-- MICRO 1: EL RETO -->
+        <section id="micro-1" class="fade-in space-y-6">
+            <div class="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg shadow-sm">
+                <div class="flex gap-4">
+                    <div class="text-orange-500"><i data-lucide="alert-triangle" class="w-12 h-12"></i></div>
+                    <div>
+                        <h2 class="text-xl font-bold text-orange-800 mb-2">¿Sabías qué?</h2>
+                        <p class="text-orange-700 italic">"Cada 15 segundos, un trabajador muere a causa de accidentes o enfermedades relacionadas con el trabajo en el mundo."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                <h3 class="text-2xl font-bold mb-4">El Desafío del Día</h3>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Imagina que eres el nuevo Inspector de Seguridad de una bodega logística. En tu primer recorrido, notas que un estante está inclinado y hay una mancha de aceite justo debajo. 
+                    <strong>¿Podrías diferenciar qué es el peligro y cuál es el riesgo antes de que alguien salga herido?</strong>
+                </p>
+                <div class="bg-gray-50 p-4 rounded-xl border border-dashed border-gray-300 text-center mb-6">
+                    <p class="text-sm font-medium text-gray-500">CONOCIMIENTO PREVIO</p>
+                    <p class="text-lg">¿Crees que "Peligro" y "Riesgo" son lo mismo?</p>
+                </div>
+                <button onclick="navigateTo('micro-2', 25)" class="w-full sena-bg-green hover:bg-green-700 text-white font-bold py-4 rounded-xl shadow-lg transition-colors flex items-center justify-center gap-2">
+                    Aceptar el Reto <i data-lucide="chevron-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- MICRO 2: EL CONTENIDO -->
+        <section id="micro-2" class="hidden fade-in space-y-6">
+            <div class="flex items-center gap-3 mb-2">
+                <i data-lucide="book-open" class="sena-text-green"></i>
+                <h2 class="text-2xl font-bold">Fundamentos Técnicos</h2>
+            </div>
+
+            <!-- UBICACIÓN DE IMAGEN SOLICITADA -->
+            <div class="w-full mb-6">
+                <figure class="overflow-hidden rounded-2xl shadow-md border border-gray-200 bg-gray-50">
+                    <img 
+                        src="imagen/download (2).jpg" 
+                        alt="Fundamentos de Seguridad y Salud en el Trabajo" 
+                        class="w-full h-auto object-cover max-h-[300px]"
+                        onerror="this.onerror=null; this.src='https://placehold.co/800x300/39A900/white?text=Identificación+de+Riesgos+y+Peligros'; this.alt='Imagen no disponible - Banner SST';"
+                    />
+                    <figcaption class="sr-only">Banner informativo sobre la identificación de peligros y evaluación de riesgos.</figcaption>
+                </figure>
+            </div>
+
+            <!-- Objetivo del Aprendizaje -->
+            <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 mb-6">
+                <p class="text-blue-800 text-sm"><strong>Competencia:</strong> Al finalizar, identificarás peligros y evaluarás riesgos según la GTC 45.</p>
+            </div>
+
+            <!-- Tabs Interactivas -->
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100">
+                <div class="flex border-b" role="tablist">
+                    <button id="tab1-btn" onclick="switchTab('tab1')" class="flex-1 py-4 font-bold border-b-2 sena-border-green sena-text-green" role="tab" aria-selected="true">1. Peligro</button>
+                    <button id="tab2-btn" onclick="switchTab('tab2')" class="flex-1 py-4 font-bold text-gray-400 border-b-2 border-transparent" role="tab" aria-selected="false">2. Riesgo</button>
+                    <button id="tab3-btn" onclick="switchTab('tab3')" class="flex-1 py-4 font-bold text-gray-400 border-b-2 border-transparent" role="tab" aria-selected="false">3. Clasificación</button>
+                </div>
+
+                <div class="p-6">
+                    <div id="tab1" class="space-y-4">
+                        <h4 class="text-xl font-bold">Fuente, situación o acto...</h4>
+                        <p class="text-gray-600">Es algo con potencial de causar daño. Por ejemplo: Un cable pelado o un piso resbaloso.</p>
+                        <div class="p-4 bg-gray-50 rounded-lg border-l-4 border-gray-400 italic">"El peligro es la causa intrínseca."</div>
+                    </div>
+                    <div id="tab2" class="hidden space-y-4">
+                        <h4 class="text-xl font-bold">Probabilidad x Consecuencia</h4>
+                        <p class="text-gray-600">Es la combinación de la probabilidad de que ocurra un evento y la severidad de la lesión.</p>
+                        <div class="p-4 bg-gray-50 rounded-lg border-l-4 border-gray-400 italic">"El riesgo es la materialización del peligro."</div>
+                    </div>
+                    <div id="tab3" class="hidden grid grid-cols-2 gap-3 text-sm">
+                        <div class="p-3 border rounded-lg bg-red-50 font-semibold">Físico (Ruido)</div>
+                        <div class="p-3 border rounded-lg bg-blue-50 font-semibold">Químico (Gases)</div>
+                        <div class="p-3 border rounded-lg bg-green-50 font-semibold">Biológico (Virus)</div>
+                        <div class="p-3 border rounded-lg bg-purple-50 font-semibold">Biomecánico</div>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="navigateTo('micro-3', 50)" class="w-full bg-gray-800 hover:bg-black text-white font-bold py-4 rounded-xl shadow-lg transition-colors flex items-center justify-center gap-2">
+                Ir a la Práctica <i data-lucide="play"></i>
+            </button>
+        </section>
+
+        <!-- MICRO 3: LA APLICACIÓN -->
+        <section id="micro-3" class="hidden fade-in space-y-6">
+            <h2 class="text-2xl font-bold flex items-center gap-2">
+                <i data-lucide="search" class="sena-text-green"></i> Taller: El Inspector Digital
+            </h2>
+
+            <div class="w-full mb-6">
+                <figure class="overflow-hidden rounded-2xl shadow-md border border-gray-200 bg-gray-50">
+                    <img 
+                        src="imagen/download.jpg" 
+                        alt="Caso de estudio práctico - Taller SST" 
+                        class="w-full h-auto object-cover max-h-[300px]"
+                        onerror="this.onerror=null; this.src='https://placehold.co/800x300/39A900/white?text=Taller:+El+Inspector+Digital'; this.alt='Imagen no disponible - Taller SST';"
+                    />
+                    <figcaption class="sr-only">Imagen de apoyo visual para la inspección y taller práctico en bodega.</figcaption>
+                </figure>
+            </div>
+
+            <p class="text-gray-600 italic">Haz clic en la opción correcta para clasificar el peligro detectado:</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white p-6 rounded-2xl shadow border-2 border-transparent hover:border-green-200 transition-all">
+                    <h4 class="font-bold mb-2">Escenario A</h4>
+                    <p class="text-sm mb-4">Un trabajador levanta cajas de 30kg repetitivamente.</p>
+                    <div class="flex flex-col gap-2">
+                        <button onclick="giveFeedback(this, true, '¡Correcto! Es un peligro Biomecánico.')" class="p-3 bg-gray-100 rounded-lg hover:bg-green-100 text-left text-sm font-medium">Es un Peligro Biomecánico</button>
+                        <button onclick="giveFeedback(this, false, 'No. Esto se relaciona con carga física.')" class="p-3 bg-gray-100 rounded-lg hover:bg-red-100 text-left text-sm font-medium">Es un Peligro Psicosocial</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow border-2 border-transparent hover:border-green-200 transition-all">
+                    <h4 class="font-bold mb-2">Escenario B</h4>
+                    <p class="text-sm mb-4">Se detecta una fuga de cloro gaseoso.</p>
+                    <div class="flex flex-col gap-2">
+                        <button onclick="giveFeedback(this, false, '¡Casi! El cloro es una sustancia.')" class="p-3 bg-gray-100 rounded-lg hover:bg-red-100 text-left text-sm font-medium">Es un Peligro Físico</button>
+                        <button onclick="giveFeedback(this, true, '¡Excelente! Los gases son peligros químicos.')" class="p-3 bg-gray-100 rounded-lg hover:bg-green-100 text-left text-sm font-medium">Es un Peligro Químico</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="feedback-message" class="hidden p-4 rounded-xl text-center font-bold"></div>
+
+            <button onclick="navigateTo('micro-4', 75)" class="w-full sena-bg-green hover:bg-green-700 text-white font-bold py-4 rounded-xl shadow-lg transition-colors flex items-center justify-center gap-2">
+                Validar Conocimientos <i data-lucide="check-circle-2"></i>
+            </button>
+        </section>
+
+        <!-- MICRO 4: EVALUACIÓN -->
+        <section id="micro-4" class="hidden fade-in space-y-6">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold mb-2 italic">Examen Final de Competencia</h2>
+            </div>
+
+            <div id="quiz-container" class="space-y-8 bg-white p-8 rounded-2xl shadow-xl">
+                <div class="quiz-q" data-correct="1">
+                    <p class="font-bold text-lg mb-4">1. ¿Qué es el Riesgo?</p>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-4 border rounded-xl cursor-pointer hover:bg-blue-50 transition-colors">
+                            <input type="radio" name="q1" value="0" class="mr-3 w-5 h-5"> Solo la probabilidad de morir.
+                        </label>
+                        <label class="flex items-center p-4 border rounded-xl cursor-pointer hover:bg-blue-50 transition-colors">
+                            <input type="radio" name="q1" value="1" class="mr-3 w-5 h-5"> Probabilidad combinada con severidad.
+                        </label>
+                    </div>
+                </div>
+
+                <div class="quiz-q" data-correct="0">
+                    <p class="font-bold text-lg mb-4">2. Un virus en el hospital es un peligro:</p>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-4 border rounded-xl cursor-pointer hover:bg-blue-50 transition-colors">
+                            <input type="radio" name="q2" value="0" class="mr-3 w-5 h-5"> Biológico.
+                        </label>
+                        <label class="flex items-center p-4 border rounded-xl cursor-pointer hover:bg-blue-50 transition-colors">
+                            <input type="radio" name="q2" value="1" class="mr-3 w-5 h-5"> Físico.
+                        </label>
+                    </div>
+                </div>
+
+                <button onclick="finishQuiz()" class="w-full sena-bg-green text-white py-4 rounded-xl font-bold text-xl shadow-lg hover:scale-[1.02] transition-transform">
+                    Finalizar Evaluación
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL DE INSIGNIA -->
+    <div id="badge-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-8 max-w-sm w-full text-center shadow-2xl">
+            <div class="w-32 h-32 sena-bg-green mx-auto rounded-full flex items-center justify-center mb-6 shadow-lg border-4 border-white">
+                <i data-lucide="award" class="text-white w-20 h-20"></i>
+            </div>
+            <h2 class="text-2xl font-black mb-2">¡CERTIFICADO!</h2>
+            <p class="text-gray-600 mb-6">Has demostrado dominio en SST.</p>
+            <button onclick="location.reload()" class="w-full bg-gray-900 text-white py-3 rounded-xl font-bold">Volver a Repasar</button>
+        </div>
+    </div>
+
+    <footer class="p-6 text-center text-gray-400 text-sm">
+        <p>SENA - 2024 | Accesibilidad WCAG 2.1</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        let score = 0;
+        let progress = 5;
+
+        function navigateTo(sectionId, progressValue) {
+            document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            progress = progressValue;
+            document.getElementById('progress-bar').style.width = progress + '%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function switchTab(tabId) {
+            ['tab1', 'tab2', 'tab3'].forEach(id => document.getElementById(id).classList.add('hidden'));
+            document.getElementById(tabId).classList.remove('hidden');
+
+            ['tab1-btn', 'tab2-btn', 'tab3-btn'].forEach(id => {
+                const btn = document.getElementById(id);
+                btn.classList.remove('sena-border-green', 'sena-text-green');
+                btn.classList.add('text-gray-400', 'border-transparent');
+                btn.setAttribute('aria-selected', 'false');
+            });
+
+            const activeBtn = document.getElementById(tabId + '-btn');
+            activeBtn.classList.add('sena-border-green', 'sena-text-green');
+            activeBtn.classList.remove('text-gray-400', 'border-transparent');
+            activeBtn.setAttribute('aria-selected', 'true');
+        }
+
+        function giveFeedback(btn, isCorrect, message) {
+            const feedbackEl = document.getElementById('feedback-message');
+            feedbackEl.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
+            
+            if (isCorrect) {
+                feedbackEl.classList.add('bg-green-100', 'text-green-800');
+                feedbackEl.innerHTML = `<i data-lucide="check" class="inline w-5 h-5 mr-1"></i> ${message}`;
+                score += 10;
+                updateScore();
+                btn.parentElement.querySelectorAll('button').forEach(b => b.disabled = true);
+            } else {
+                feedbackEl.classList.add('bg-red-100', 'text-red-800');
+                feedbackEl.innerHTML = `<i data-lucide="x" class="inline w-5 h-5 mr-1"></i> ${message}`;
+            }
+            lucide.createIcons();
+        }
+
+        function updateScore() {
+            document.getElementById('points-display').innerText = score + ' Puntos';
+        }
+
+        function finishQuiz() {
+            let quizCorrect = 0;
+            const questions = document.querySelectorAll('.quiz-q');
+            
+            questions.forEach(q => {
+                const correctVal = q.getAttribute('data-correct');
+                const selected = q.querySelector('input[type="radio"]:checked');
+                if (selected && selected.value === correctVal) quizCorrect++;
+            });
+
+            if (quizCorrect === questions.length) {
+                score += 50;
+                updateScore();
+                document.getElementById('progress-bar').style.width = '100%';
+                document.getElementById('badge-modal').classList.remove('hidden');
+            } else {
+                alert("¡Casi! Revisa tus respuestas e inténtalo de nuevo para ganar tu insignia.");
+            }
+        }
+    </script>
+</body>
+</html>
